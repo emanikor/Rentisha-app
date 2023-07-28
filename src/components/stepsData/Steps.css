@@ -1,0 +1,16 @@
+.steps-container{
+  background-color: rgb(206, 206, 206);
+  margin-right: 200px;
+  padding: 80px 50px;
+  margin-bottom: 30px;
+
+}
+@media screen and (max-width: 600px){
+    .steps-container{
+        background-color: rgb(206, 206, 206);
+        margin-right: 0px;
+        padding: 80px 60px;
+        margin-bottom: 30px;
+      
+      }
+}
