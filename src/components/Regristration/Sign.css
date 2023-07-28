@@ -1,0 +1,35 @@
+/* sign.css */
+
+.inputSign {
+    max-width: 400px;
+    margin: 0 auto;
+    margin-top: 50px;
+  }
+  
+  .inputSign form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .inputSign input {
+    padding: 13px;
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid rgb(204, 203, 203);
+    
+  }
+  
+  
+  .inputSign input[type="submit"] {
+    margin-top: 30px;
+    background-color:rgb(23, 145, 145);
+    font-size: 20px;
+    color: #fff;
+    cursor: pointer;
+  }
+  .inputSign input[type="submit"]:hover {
+opacity: .7;
+  }
+  
+ 
+  

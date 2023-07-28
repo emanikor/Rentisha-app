@@ -2,7 +2,8 @@
 .hero-wrapper {
     color: #000000;
     position: relative;
-    padding-bottom: 1rem;
+    padding-top: 2rem;
+    padding-bottom: 5rem;
     background-color: rgb(255, 255, 255);
 }
 .hero-container{
@@ -12,6 +13,7 @@
     display: flex;
    align-items: flex-end;
   justify-content: space-between; 
+
 }
 .left-hero{
    
@@ -80,7 +82,16 @@ gap: 1rem;
 
 
 span{
-    color: rgb(41, 236, 34);
+    color: rgb(9, 173, 173);
+}
+.break{
+  margin-top: 40px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  margin-left: 20%;
+  width: 60%;
+  border: 1px solid rgb(214, 213, 213);
 }
 @media (max-width: 768px) {
     .about-content {

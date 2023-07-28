@@ -16,8 +16,16 @@ export const MenuList = [
         url:"/category"
     },
     {
+        title:"Check Reviews",
+        url:"/Reviews"
+    },
+    {
         title:"About Us",
         url:"/about"
+    },
+    {
+        title:"signup&signin",
+        url:"/sign"
     },
     
 

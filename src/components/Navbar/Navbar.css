@@ -7,6 +7,7 @@ nav{
     color: rgb(238, 229, 229);
     position: relative;
     z-index: 99;
+    border-bottom: 1px solid rgb(224, 224, 224);
     
 }
 .logo{
@@ -27,21 +28,23 @@ nav{
     text-decoration: none;
     color: #000000;
     font-weight: 300;
-    padding: 5px 40px;
+    padding: 5px 15px;
     
 }
-/* .menu-list li:last-child a{
+.menu-list li:last-child a{
     font-weight: 300;
-    padding: 5px 10px;
-    background-color: blue;
+    padding: 15px 10px;
+    background-color:rgb(6, 194, 184);
     transition: all 0.5s ease-in-out;
     margin-left: 20px;
     border-radius: 2px;
-} */
+    color: #ffffff;
+    border-radius: 5px;
+}
 .menu-list li a:hover{
-    background-color: #ffffff;
+   
     border-radius: 2px;
-    color: blue;
+opacity: .4;
     transition:all 0.5s ease-in-out;
 }
 .menu-icon{

@@ -1,8 +1,14 @@
 import React from 'react'
+import Footer from '../Footer/Footer';
+import ListofItems from '../ListOfItem/ListofItems';
 
-const List=()=> {
+const List  =()=> {
   return (
-    <div>List</div>
+    <div>
+      <ListofItems/>
+      <Footer/>
+      
+    </div>
   )
 }
 

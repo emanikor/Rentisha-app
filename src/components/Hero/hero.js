@@ -32,7 +32,7 @@ function Hero() {
          </div>
         </div>
     </div>
-    
+    <div className='break flexCenter innerWith'></div>
     </section>
   )
 }

@@ -7,6 +7,8 @@ import Category from "./pages/Category";
 import About from "./pages/About";
 import Navbar from "./Navbar/Navbar";
 
+import SignIn from "./Regristration/SignIn";
+
 function App() {
   return (
     <div className="container">
@@ -28,6 +30,9 @@ function App() {
           <Route path='/About' element={<About />}>
            
           </Route>
+          <Route path='/sign' element={<SignIn />}>
+           
+           </Route>
         </Routes>
       </Router>
     </div>
