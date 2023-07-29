@@ -1,8 +1,16 @@
 import React from 'react'
+import Product from '../Product/Product'
+import Footer from '../Footer/Footer'
+
+
+
 
 const Category =()=> {
   return (
-    <div>Category</div>
+    <div>
+      <Product/>
+      <Footer/>
+    </div>
   )
 }
 

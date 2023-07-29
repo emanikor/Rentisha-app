@@ -73,8 +73,8 @@
   }
   
   .secondaryText {
-    color: rgb(140 139 139);
-    font-size: 0.9rem;
+    color: rgb(6, 115, 122);
+    font-size: 1.4rem;
   }
   .orangeText {
     color: orange;
@@ -86,6 +86,10 @@
     font-size:46px;
     font-weight: 700;
   
+  }
+  .aboutContent{
+    font-size: 18px;
+    color: #3a3a3b;
   }
   /* media queries */
   @media (min-width: 1536px) {

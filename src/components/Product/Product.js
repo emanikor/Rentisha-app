@@ -98,11 +98,13 @@ const Product = () => {
 
   return (
     <div className='product '>
+        <h1 className=' paddings  headProduct flexCenter'>Explore Category</h1>
       <div className='paddings card-Product'>
+        
     {ProductDetail.map((ProductDetail) => (
-      <div key={ProductDetail.id} className='card-Product-container  '>
+      <div key={ProductDetail.id} className=' card-Product-container  '>
          <img src={ProductDetail.Img} alt={ProductDetail.Title} />
-         <div className='paddings card-body'>
+         <div className='flexColStart product-card-body'>
          <h3 className='headTitle'>{ProductDetail.Title}</h3>
         <h3 className='headTitle'>{ProductDetail.Cat}</h3>
         <h3 className='headTitle'>{ProductDetail.Price}</h3>

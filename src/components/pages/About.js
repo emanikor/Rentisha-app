@@ -1,8 +1,13 @@
 import React from 'react'
+import Aboutpage from '../Aboutpage/Aboutpage'
+import Footer from '../Footer/Footer'
 
 const About=()=> {
   return (
-    <div>About</div>
+    <div>
+      <Aboutpage/>
+      <Footer/>
+    </div>
   )
 }
 
