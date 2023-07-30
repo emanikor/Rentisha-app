@@ -1,5 +1,6 @@
 nav{
     background-color: #fdfdfd;
+    
     padding: 20px ;
     display: flex;
     align-items: center;
@@ -40,6 +41,7 @@ nav{
     border-radius: 2px;
     color: #ffffff;
     border-radius: 5px;
+    display: block;
 }
 .menu-list li a:hover{
    
@@ -55,51 +57,52 @@ opacity: .4;
   cursor: pointer;
   transition:all 0.3s ease-in-out;
 }
-@media screen and (max-width: 800px){
-    .logo{
-        font-size: 30px;
-   
+/* Responsive Styles */
+@media screen and (max-width: 800px) {
+    .logo {
+      font-size: 30px;
     }
-    .menu-list li a{
-        font-size: 14px;
-        margin-left: 10px;
+    .menu-list li a {
+      font-size: 14px;
+      padding: 10px 15px; /* Adjust the padding to make the links larger */
+      min-width: 100px; /* Set a minimum width to prevent squishing */
     }
-}
-@media screen and (max-width: 600px){
-    .menu-icon{
+  }
+  
+  @media screen and (max-width: 600px) {
+    .menu-icon {
       display: block;
       color: #383636;
       font-size: 30px;
       margin-left: 230px;
-
     }
-    .menu-list{
-        flex-direction: column;
-        width: 100%;
-        position: absolute;
-        background-color: #e4dcdc;
-        padding: 20px;
-        right: 0;
-        top: 64px;
+    .menu-list {
+      flex-direction: column;
+      width: 100%;
+      position: absolute;
+      background-color: #e4dcdc;
+      padding: 20px;
+      right: 0;
+      top: 64px;
     }
-    .menu-list li{
-        margin-bottom: 30px;
-        
-        width: 100%;
-        text-align: center;
-
+    .menu-list li {
+      margin-bottom: 30px;
+      width: 100%;
+      text-align: center;
     }
-    .menu-list li:last-child{
-        margin-bottom: 0px;
+    .menu-list li:last-child {
+      margin-bottom: 0px;
     }
-    .menu-list li a, .menu-list li:last-child a{
-        width: 100px;
-        display:block ;
-        margin: auto;
+    .menu-list li a,
+    .menu-list li:last-child a {
+      width: 100%;
+      display: block;
+      margin: auto;
+      padding: 15px 20px; /* Adjust the padding to make the links larger */
     }
-    .menu-list.close{
-        right:100%;
-        transition: all 0.5s ease-in-out;
+    
+    .menu-list.close {
+      right: 100%;
+      transition: all 0.5s ease-in-out;
     }
- 
-}
+  }

@@ -43,6 +43,13 @@
   color: rgb(8, 122, 122);
   font-size: 40px;
   }
+
+  .fa-cart-shopping{
+    margin-left: 150px;
+    cursor: pointer;
+    text-align: right;
+    float: right;
+  }
   @media screen and (max-width: 600px){
     .card-Product {
         display: grid;

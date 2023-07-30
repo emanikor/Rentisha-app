@@ -8,6 +8,7 @@ export const Login = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(email);
+         // authentication 
     }
 
     return (
@@ -20,7 +21,7 @@ export const Login = (props) => {
                 <input value={pass} onChange={(e) => setPass(e.target.value)} type="password" placeholder="********" id="password" name="password" />
                 <button type="submit">Log In</button>
             </form>
-            <a className="link-text" onClick={() => props.onFormSwitch('SignUp')}>Already have an account? Login here.</a>
+            <a className="link-text" onClick={() => props.onFormSwitch('SignUp')}>Don't have an account? register here.</a>
         </div>
     )
 }

@@ -32,7 +32,7 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: 400;
     color: rgb(128, 123, 123);
-    width: 300px;
+    width: 400px;
 }
 .btn--outline{
     padding: 13px 20px ;
@@ -55,7 +55,7 @@ gap: 1rem;
 .btnHero2{
     cursor: pointer;
     color: #000000;
-    background-color: #43ddf8;
+    background-color: rgb(9, 173, 173);
    border-color: #242424;
     border:none;
     font-size: 18px;
@@ -93,6 +93,34 @@ span{
   width: 60%;
   border: 1px solid rgb(214, 213, 213);
 }
+.search{
+  width: 400px;
+  padding: 10px 5px;
+  
+  border: none;
+  outline: none;
+ 
+
+}
+.search-input button{
+  color: #ffffff;
+  padding: 5px;
+  background-color: #000000;
+  border: none;
+  outline: none;
+  cursor: pointer;
+
+
+}
+.search-input{
+  margin: 0 auto;
+  width: 500px;
+ 
+  border-radius: 30px;
+  border: 1px solid rgb(214, 213, 213);
+  color: #242424;
+
+}
 @media (max-width: 768px) {
     .about-content {
       flex-direction: column;
@@ -124,5 +152,15 @@ span{
       padding-bottom: 1rem; 
       
    }
+   .search-input{
+   
+    width: 300px;
+   
+  
+  }
+  .search{
+    width: 200px;
+    padding: 10px 5px;
+  }
    
   }

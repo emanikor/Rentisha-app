@@ -105,9 +105,13 @@ const Product = () => {
       <div key={ProductDetail.id} className=' card-Product-container  '>
          <img src={ProductDetail.Img} alt={ProductDetail.Title} />
          <div className='flexColStart product-card-body'>
-         <h3 className='headTitle'>{ProductDetail.Title}</h3>
-        <h3 className='headTitle'>{ProductDetail.Cat}</h3>
-        <h3 className='headTitle'>{ProductDetail.Price}</h3>
+         <h3 className='secondaryText'>{ProductDetail.Title}</h3>
+        <h3 className='secondaryText'>{ProductDetail.Cat}</h3>
+        <div className=' flexCenter  cart '>
+        <h3 className='secondaryText '>price:  {ProductDetail.Price}</h3>
+        <i class="fa-solid fa-cart-shopping"></i>
+        </div>
+      
         
       </div>
       </div>
