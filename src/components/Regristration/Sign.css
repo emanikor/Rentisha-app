@@ -1,35 +1,51 @@
-/* sign.css */
+/* Sign.css */
 
-.inputSign {
-    max-width: 400px;
-    margin: 0 auto;
-    margin-top: 50px;
+/* Common styles for both forms */
+.auth-form-container {
+  margin: 0 auto;
+  max-width: 700px;
   }
   
-  .inputSign form {
-    display: flex;
-    flex-direction: column;
+  .auth-form-container h2 {
+    margin-top: 40px;
+    margin-bottom: 10px;
+    text-align: center;
+    color: #333;
   }
   
-  .inputSign input {
-    padding: 13px;
-    margin-bottom: 30px;
+  .auth-form-container input {
+    margin-top: 20px;
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 10px;
+    font-size: 16px;
     border: none;
-    border-bottom: 1px solid rgb(204, 203, 203);
+    border-bottom: 1px solid #ccc;
     
   }
   
-  
-  .inputSign input[type="submit"] {
-    margin-top: 30px;
-    background-color:rgb(23, 145, 145);
-    font-size: 20px;
+  .auth-form-container button {
+    margin-top: 40px;
+    width: 60%;
+    padding: 18px;
+    font-size: 16px;
+    background-color: #057771;
     color: #fff;
+    border: none;
+    border-radius: 5px;
     cursor: pointer;
   }
-  .inputSign input[type="submit"]:hover {
-opacity: .7;
+  
+  .link-text {
+    margin-top: 20px;
+    text-align: center;
+    color: #007bff;
+    cursor: pointer;
   }
   
- 
+  .link-btn:hover {
+    text-decoration: underline;
+  }
+  
+  /* Additional styles can be added based on your specific design requirements */
   

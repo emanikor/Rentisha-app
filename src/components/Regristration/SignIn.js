@@ -1,55 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import './Sign.css';
-import '../component.css';
-import { Link } from 'react-router-dom';
 
-const SignIn = () => {
-  const [Name, setName] = useState('');
-  const [Pass, setPass] = useState('');
+export const Login = (props) => {
+    const [email, setEmail] = useState('');
+    const [pass, setPass] = useState('');
 
-  const formsubmit = (e) => {
-    e.preventDefault();
-    console.log('Form submitted');
-    console.log('Username:', Name);
-    console.log('Password:', Pass);
-    // Here, you can handle the form submission logic, such as sending the data to the server for authentication.
-  };
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(email);
+    }
 
-  const handleNameChange = (e) => {
-    setName(e.target.value);
-  };
-
-  const handlePassChange = (e) => {
-    setPass(e.target.value);
-  };
-
-  return (
-    <div className='inputSign'>
-      <form onSubmit={formsubmit}>
-        <h5 className='flexCenter paddings secondaryText'>Log into your Account</h5>
-        <input
-          type='text'
-          value={Name}
-          onChange={handleNameChange}
-          id='userName'
-          name='userName'
-          placeholder='Username'
-        />
-        <input
-          type='password'
-          value={Pass}
-          onChange={handlePassChange}
-          id='password'
-          name='password'
-          placeholder='Enter password'
-        />
-        <input type='submit' value='Login' />
-        Already have an account? <Link to='/signup'>Sign Up</Link>
-      </form>
-  
-    </div>
-  );
-};
-
-export default SignIn;
-
+    return (
+        <div className="auth-form-container">
+            <h2>Login</h2>
+            <form className="login-form" onSubmit={handleSubmit}>
+                <label htmlFor="email">email</label>
+                <input value={email} onChange={(e) => setEmail(e.target.value)}type="email" placeholder="youremail@gmail.com" id="email" name="email" />
+                <label htmlFor="password">password</label>
+                <input value={pass} onChange={(e) => setPass(e.target.value)} type="password" placeholder="********" id="password" name="password" />
+                <button type="submit">Log In</button>
+            </form>
+            <a className="link-text" onClick={() => props.onFormSwitch('SignUp')}>Already have an account? Login here.</a>
+        </div>
+    )
+}
+ export default Login
