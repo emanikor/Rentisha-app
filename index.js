@@ -1,13 +1,9 @@
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
-const authRoutes  = require("./Routes/authRoutes")
+const AuthRoutes = require("./Route/AuthRoutes");
 const app = express();
-const cookieParser = require("cookie-parser")
-
-app.listen(4000, () => {
-  console.log('Server started on PORT 4000');
-});l
+const cookieParser = require("cookie-parser");
 
 mongoose.connect("mongodb://localhost:27017/jwt", {
   useNewUrlParser: true,
@@ -26,7 +22,11 @@ app.use(cors({
   credentials: true,
 }));
 
-
-app.use(cookieParser)
+app.use(cookieParser);
 app.use(express.json());
-app.use("/", authRoutes);
+app.use("/", AuthRoutes);
+
+app.listen(4000, () => {
+  console.log('Server started on PORT 4000');
+});
+
