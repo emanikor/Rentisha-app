@@ -1,14 +1,23 @@
+
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
-const AuthRoutes = require("./Route/AuthRoutes");
-const app = express();
-const cookieParser = require("cookie-parser");
+const UserModel = require("./Models/UserModel");
 
-mongoose.connect("mongodb://localhost:27017/jwt", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
+const app = express();
+const PORT = 4000;
+
+// Middleware
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// MongoDB Connection
+mongoose
+  .connect("mongodb://localhost:27017/jwt", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then(() => {
     console.log("DB connection successful");
   })
@@ -16,17 +25,36 @@ mongoose.connect("mongodb://localhost:27017/jwt", {
     console.log(err.message);
   });
 
-app.use(cors({
-  origin: "http://localhost:3000",
-  methods: ["GET", "POST"],
-  credentials: true,
-}));
+// User Registration Endpoint
+app.post("/SignUp", async (req, res) => {
+  try {
+    const { name, email, phone, password, confirmPassword } = req.body;
 
-app.use(cookieParser);
-app.use(express.json());
-app.use("/", AuthRoutes);
+    // Compare password and confirmPassword
+    if (password !== confirmPassword) {
+      return res.status(400).json({ error: "Passwords do not match" });
+    }
 
-app.listen(4000, () => {
-  console.log('Server started on PORT 4000');
+    // Create a new user document
+    const newUser = new UserModel({
+      name,
+      email,
+      phone,
+      password,
+      confirmPassword,
+    });
+
+    // Save the user to the database
+    await newUser.save();
+
+    res.status(201).json({ message: "User registered successfully" });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: "Internal server error" });
+  }
 });
 
+// Start the server
+app.listen(PORT, () => {
+  console.log(`Server started on PORT ${PORT}`);
+});
