@@ -17,8 +17,9 @@ const handleErrors = (err) => {
     errors.email = "Email is already registered";
   }
   
-  // Check if the error message includes "users validation failed"
+  //  error message for"users validation failed"
   if (err.message.includes("users validation failed")) {
+
     // Loop through the error messages and set them in the errors object
     Object.values(err.errors).forEach(({ properties }) => {
       errors[properties.path] = properties.message;
@@ -30,8 +31,8 @@ const handleErrors = (err) => {
 
 module.exports.register = async (req, res, next) => {
   try {
-    const { email, password } = req.body;
-    const user = await UserModel.create({ email, password });
+    const { name,  email, phone, password, confirmPassword  } = req.body;
+    const user = await UserModel.create({name,  email, phone, password, confirmPassword });
     const token = createToken(user._id);
 
     res.cookie("jwt", token, {
@@ -49,5 +50,5 @@ module.exports.register = async (req, res, next) => {
 };
 
 module.exports.signin = async (req, res, next) => {
-  // Implementation for user sign-in goes here
+//    signin
 };
