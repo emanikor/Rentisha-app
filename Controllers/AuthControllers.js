@@ -13,8 +13,15 @@ const createToken = (id) => {
 const handleErrors = (err) => {
   let errors = { email: "", password: "" };
 
-  if (err.code === 11000) {
-    errors.email = "Email is already registered";
+  if (err.message === "incorrect email")
+   errors.email ="that email is not registered";
+
+   if (err.message === "incorrect password")
+   errors.email ="that password is incorrect";
+
+
+  if (err.message === 11000) {
+    errors.password = "Email is already registered";
   }
   
   //  error message for"users validation failed"
@@ -30,6 +37,7 @@ const handleErrors = (err) => {
 };
 
 module.exports.register = async (req, res, next) => {
+  // signup
   try {
     const { name,  email, phone, password, confirmPassword  } = req.body;
     const user = await UserModel.create({name,  email, phone, password, confirmPassword });
@@ -51,4 +59,21 @@ module.exports.register = async (req, res, next) => {
 
 module.exports.signin = async (req, res, next) => {
 //    signin
+try {
+  const {  email, password } = req.body;
+  const user = await UserModel.login({email, password});
+  const token = createToken(user._id);
+
+  res.cookie("jwt", token, {
+    withCredentials: true,
+    httpOnly: false,
+    maxAge: maxAge * 1000,
+  });
+
+  res.status(200).json({ user: user._id, created: true });
+} catch (err) {
+  console.log(err);
+  const errors = handleErrors(err);
+  res.json({ errors, created: false });
+}
 };
