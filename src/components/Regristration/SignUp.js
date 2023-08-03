@@ -1,60 +1,76 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+
+
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
-import { useCookies } from "react-cookie";
-import { Link, useNavigate } from "react-router-dom";
+import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
+import './Sign.css';
 
+export const Register = (props) => {
+  const Navigate = useNavigate();
+  const initialValues = {
+    name: "",
+    email: "",
+    phone: "",
+    password: "",
+    confirmPassword: "",
+  };
 
-const Register =()=> {
-  const [cookies] = useCookies(["cookie-name"]);
-  const navigate = useNavigate();
-  useEffect(() => {
-    if (cookies.jwt) {
-      navigate("/");
+  const generateSuccess = (success) => toast.success(success, {
+    position: "bottom-right"
+  });
+
+  const generateError = (err) => toast.error(err, {
+    position: "bottom-right"
+  });
+
+  const [values, setValues] = useState(initialValues);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    // Check if passwords match
+    if (values.password !== values.confirmPassword) {
+      generateError("Password and Confirm Password do not match");
+      return;
     }
-  }, [cookies, navigate]);
 
-  const [values, setValues] = useState({ email: "", password: "" });
+    
+  try {
+    const { data } = await axios.post("http://localhost:4000/SignUp", {
+      ...values,
+    },
+  {
+    withCredentials: true,  
+  });
 
-  const generateError = (error) =>
-    toast.error(error, {
-      position: "bottom-right",
-    });
-
-
-
-  const handleSubmit = async (event) => {
-
-
-    event.preventDefault();
-    try {
-      const { data } = await axios.post(
-        "http://localhost:4000/register",
-        {
-          ...values,
-        },
-        { withCredentials: true }
-      );
-      if (data) {
-        if (data.errors) {
-          const { email, password } = data.errors;
-          if (email) generateError(email);
-          else if (password) generateError(password);
-        } else {
-          navigate("/");
-        }
+    if (data) {
+      if (data.errors) {
+        const { email, password } = data.errors;
+        if (email) generateError(email);
+        else if (password) generateError(password);
+      } else {
+        Navigate("/");
+        generateSuccess("successfully registered");
       }
-    } catch (ex) {
-      console.log(ex);
-    }
+    } // Log the response from the server
+  } catch (err) {
+    console.log(err);
+  }
+
+  console.log("Form submitted");
+  console.log(values);
+    // Reset form after submission
+    setValues(initialValues);
   };
 
   return (
     <div className="auth-form-container">
       <h2 className="paddings">Register Your Account Here</h2>
       <form className="register-form" onSubmit={handleSubmit}>
-        <label htmlFor="name">Full name</label>
-        <input
+      <label htmlFor="name">Full name</label>
+//         <input
           name="name"
           id="name"
           placeholder="Full Name"
@@ -118,14 +134,13 @@ const Register =()=> {
         />
 
         <button className="reg-btn" type="submit">
-        Submit
+          Submit
         </button>
       </form>
-            <span>
-          Already have an account ?<Link to="/login"> Login</Link>
-        </span>
-
-      
+      <a className="link-text" onClick={() => props.onFormSwitch("SignIn")}>
+        Already have an account? Login here.
+    
+      </a>
       <ToastContainer />
     </div>
   );
