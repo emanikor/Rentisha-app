@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import {  useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -36,7 +37,7 @@ const Login = (props) => {
           if (email) generateError(email);
           else if (password) generateError(password);
         } else {
-          Navigate("/pages/Profile");
+          Navigate("/Profile");
           generateSuccess("Successfully logged in");
         }
       } // Log the response from the server
@@ -77,8 +78,11 @@ const Login = (props) => {
                 />
                 <button type="submit">Log In</button>
             </form>
-             Don't have an account?<a className="link-text" onClick={() => props.onFormSwitch('SignUp')}> register here.</a>
-            <ToastContainer />
+            Already have an account? <a className="link-text" onClick={() => props.onFormSwitch("SignUp")}>
+         Login here.
+    
+      </a>
+      <ToastContainer />
         </div>
     )
 }
