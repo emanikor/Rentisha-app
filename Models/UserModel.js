@@ -24,6 +24,8 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: [true, "Confirm Password is required"],
   },
+  
+  items: [{ type: mongoose.Schema.Types.ObjectId, ref: 'ItemModel' }],
 });
 
 userSchema.pre("save", async function (next) {
@@ -33,7 +35,7 @@ userSchema.pre("save", async function (next) {
   });
 
 // find user
-userSchema.statics.login = async function  (email, password){
+userSchema.statics.SignUp = async function  (email, password){
   const user = await this.findOne({email});
   if(user){
     // compare password 
@@ -47,5 +49,5 @@ userSchema.statics.login = async function  (email, password){
 }
 
 
-module.exports = mongoose.model("users", userSchema);
+module.exports = mongoose.model("Users", userSchema);
 
