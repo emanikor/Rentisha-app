@@ -36,12 +36,13 @@ const Login = (props) => {
           if (email) generateError(email);
           else if (password) generateError(password);
         } else {
-          Navigate("/");
+          Navigate("/pages/Profile");
           generateSuccess("Successfully logged in");
         }
       } // Log the response from the server
     } catch (err) {
       console.log(err);
+      toast.error("incorrect email and password");
     }
 
     console.log("Form submitted");
