@@ -1,4 +1,6 @@
 const UserModel = require("../Models/UserModel");
+const express = require('express');
+const router = express.Router();
 const jwt = require("jsonwebtoken");
 
 const maxAge = 3 * 24 * 60 * 60;
@@ -8,6 +10,23 @@ const createToken = (id) => {
     expiresIn: maxAge,
   });
 };
+
+
+
+// populated
+router.get('/user/:userId', async (req, res) => {
+  const userId = req.params.userId;
+  try {
+    // Fetch the user by their ID and populate their 'item' field
+    const userWithItems = await UserModel.findById(userId).populate('item');
+    
+    // Respond with the items
+    res.json(userWithItems.items);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'An error occurred while fetching user items' });
+  }
+});
 
 // handle err validation
 const handleErrors = (err) => {
@@ -24,6 +43,7 @@ const handleErrors = (err) => {
     errors.password = "Email is already registered";
   }
   
+  
   //  error message for"users validation failed"
   if (err.message.includes("users validation failed")) {
 
@@ -35,6 +55,7 @@ const handleErrors = (err) => {
 
   return errors;
 };
+
 
 module.exports.register = async (req, res, next) => {
   // signup
@@ -57,11 +78,11 @@ module.exports.register = async (req, res, next) => {
   }
 };
 
-module.exports.signin = async (req, res, next) => {
+module.exports.signIn = async (req, res, next) => {
 //    signin
 try {
   const {  email, password } = req.body;
-  const user = await UserModel.login({email, password});
+  const user = await UserModel.SignIn(email, password);
   const token = createToken(user._id);
 
   res.cookie("jwt", token, {
